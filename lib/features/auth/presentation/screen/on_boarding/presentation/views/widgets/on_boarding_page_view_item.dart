@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:to_do_app/core/database/cache/cache_helper.dart';
+import 'package:to_do_app/core/services/services_locator.dart';
 import 'package:to_do_app/core/utils/app_colors%20(1).dart';
 import 'package:to_do_app/core/utils/app_strings.dart';
 import 'package:to_do_app/core/utils/app_styles.dart';
@@ -109,9 +110,9 @@ final onBoardingModel onboardingModel;
                )
              ),
              onPressed: ()async {
-             await CacheHelper().saveData(key: 'onBoarding', value: true).then((value){
-
-  Navigator.pushNamed(context, HomeView.routeNmae);
+      await getIt<CacheHelper>() .saveData(
+              key: AppStrings.onBoardingKey, value: true).then((value){
+                Navigator.pushNamed(context, HomeView.routeNmae);
              });
             
              },
