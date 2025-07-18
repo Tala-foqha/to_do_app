@@ -1,8 +1,8 @@
 // features/auth/presentation/screen/splash/presentation/views/widgets/splash_view_body.dart
 import 'package:flutter/material.dart';
-import 'package:to_do_app/core/helper_functions/utils/app_colors%20(1).dart';
-import 'package:to_do_app/core/helper_functions/utils/app_strings.dart';
-import 'package:to_do_app/core/helper_functions/utils/app_styles.dart';
+import 'package:to_do_app/core/utils/app_colors%20(1).dart';
+import 'package:to_do_app/core/utils/app_strings.dart';
+import 'package:to_do_app/core/utils/app_styles.dart';
 import 'package:to_do_app/features/auth/presentation/screen/on_boarding/presentation/views/on_boarding_view.dart';
 
 class SplashViewBody extends StatefulWidget {

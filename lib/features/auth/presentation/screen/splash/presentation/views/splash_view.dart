@@ -1,6 +1,6 @@
 // features/auth/presentation/screen/splash/presentation/views/splash_view.dart
 import 'package:flutter/material.dart';
-import 'package:to_do_app/core/helper_functions/utils/app_colors%20(1).dart';
+import 'package:to_do_app/core/utils/app_colors%20(1).dart';
 import 'package:to_do_app/features/auth/presentation/screen/splash/presentation/views/widgets/splash_view_body.dart';
 
 class SplashView extends StatelessWidget {
@@ -9,7 +9,7 @@ static const routeName='splash-view';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.lightBlack,
+     // backgroundColor: AppColors.lightBlack,
       
       body: SplashViewBody(),
     );

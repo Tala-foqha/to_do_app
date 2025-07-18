@@ -1,6 +1,6 @@
 // features/auth/data/model/on_boarding_model.dart
 
-import 'package:to_do_app/core/helper_functions/utils/app_strings.dart';
+import 'package:to_do_app/core/utils/app_strings.dart';
 
 class onBoardingModel{
   final String images;

@@ -2,10 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:to_do_app/core/helper_functions/utils/app_colors%20(1).dart';
-import 'package:to_do_app/core/helper_functions/utils/app_strings.dart';
-import 'package:to_do_app/core/helper_functions/utils/app_styles.dart';
+import 'package:to_do_app/core/utils/app_colors%20(1).dart';
+import 'package:to_do_app/core/utils/app_strings.dart';
+import 'package:to_do_app/core/utils/app_styles.dart';
 import 'package:to_do_app/features/auth/data/model/on_boarding_model.dart';
+import 'package:to_do_app/features/task/presentation/views/home/home_view.dart';
 
 class OnBoardingPageViewItem extends StatelessWidget {
   const OnBoardingPageViewItem({
@@ -30,8 +31,9 @@ final onBoardingModel onboardingModel;
            alignment: Alignment.centerLeft,
            child: Text(
              AppStrings.skip,
-             style: AppStyles.latoRegular16.copyWith(
+             style: Theme.of(context).textTheme.displaySmall!.copyWith(
                color: AppColors.white.withOpacity(0.44),
+               fontSize: 16
              ),
            ),
          ),
@@ -87,12 +89,7 @@ final onBoardingModel onboardingModel;
            ),
            const Spacer(),
         index !=2?   ElevatedButton(
-             style: ElevatedButton.styleFrom(
-               backgroundColor: AppColors.primary,
-               shape: BeveledRectangleBorder(
-                 borderRadius: BorderRadiusGeometry.circular(4)
-               )
-             ),
+             style: Theme.of(context).elevatedButtonTheme.style,
              onPressed: () {
               controller.nextPage(duration: Duration(milliseconds: 300), curve: Curves.easeIn);
              },
@@ -111,7 +108,7 @@ final onBoardingModel onboardingModel;
                )
              ),
              onPressed: () {
-              controller.nextPage(duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+              Navigator.pushNamed(context, HomeView.routeNmae);
              },
              child: Text(AppStrings.getStarted,
              style: AppStyles.latoRegular16.copyWith(
