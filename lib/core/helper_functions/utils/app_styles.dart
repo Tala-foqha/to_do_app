@@ -6,6 +6,10 @@ class AppStyles{
   static final TextStyle latoBold40=GoogleFonts.lato(
     fontSize: 40,
     fontWeight: FontWeight.bold
-  );    
+  );   
+  static final TextStyle latoRegular16=GoogleFonts.lato(
+    fontSize: 16,
+    fontWeight: FontWeight.w400
+  ); 
 
 }
