@@ -7,6 +7,7 @@ import 'package:to_do_app/core/services/services_locator.dart';
 import 'package:to_do_app/core/utils/app_colors%20(1).dart';
 import 'package:to_do_app/core/utils/app_strings.dart';
 import 'package:to_do_app/core/utils/app_styles.dart';
+import 'package:to_do_app/core/widgets/custom_text_button.dart';
 import 'package:to_do_app/features/auth/data/model/on_boarding_model.dart';
 import 'package:to_do_app/features/task/presentation/views/home/home_view.dart';
 
@@ -77,17 +78,10 @@ final onBoardingModel onboardingModel;
          children: [
            Visibility(
             visible: index!=0,
-             child: TextButton(
-               onPressed: () {
-                controller.previousPage(duration: Duration(milliseconds: 300), curve: Curves.fastLinearToSlowEaseIn);
-               },
-               child: Text(
-                 AppStrings.back,
-                 style: AppStyles.latoRegular16.copyWith(
-                   color: AppColors.white.withOpacity(0.44),
-                 ),
-               ),
-             ),
+             child:CustomTextButton(text: AppStrings.back,
+              onPressed: () =>controller.previousPage(
+                duration: Duration(milliseconds: 300), curve: Curves.easeIn)
+)
            ),
            const Spacer(),
         index !=2?   ElevatedButton(
