@@ -106,7 +106,7 @@ final onBoardingModel onboardingModel;
              onPressed: ()async {
       await getIt<CacheHelper>() .saveData(
               key: AppStrings.onBoardingKey, value: true).then((value){
-                Navigator.pushNamed(context, HomeView.routeNmae);
+                Navigator.pushNamed(context, HomeView.routeName);
              });
             
              },

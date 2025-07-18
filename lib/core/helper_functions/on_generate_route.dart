@@ -13,7 +13,7 @@ Route<dynamic>onGenerateRoute(RouteSettings settings){
      case OnBoardingView.routeName:
    return MaterialPageRoute(builder: (context)=>OnBoardingView());
 
-    case HomeView.routeNmae:
+    case HomeView.routeName:
    return MaterialPageRoute(builder: (context)=>HomeView());
 
    default: 

@@ -28,7 +28,7 @@ void navigate(BuildContext context) {
   Future.delayed(const Duration(seconds: 3), () {
     Navigator.pushNamed(
       context,
-      isVisited ? HomeView.routeNmae : OnBoardingView.routeName,
+      isVisited ? HomeView.routeName : OnBoardingView.routeName,
     );
   });
 }
