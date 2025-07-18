@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:to_do_app/core/database/cache/cache_helper.dart';
 import 'package:to_do_app/core/utils/app_colors%20(1).dart';
 import 'package:to_do_app/core/utils/app_strings.dart';
 import 'package:to_do_app/core/utils/app_styles.dart';
@@ -107,8 +108,12 @@ final onBoardingModel onboardingModel;
                  borderRadius: BorderRadiusGeometry.circular(4)
                )
              ),
-             onPressed: () {
-              Navigator.pushNamed(context, HomeView.routeNmae);
+             onPressed: ()async {
+             await CacheHelper().saveData(key: 'onBoarding', value: true).then((value){
+
+  Navigator.pushNamed(context, HomeView.routeNmae);
+             });
+            
              },
              child: Text(AppStrings.getStarted,
              style: AppStyles.latoRegular16.copyWith(
