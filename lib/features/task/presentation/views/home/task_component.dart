@@ -12,6 +12,7 @@ class TaskComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(bottom: 16),
       height: 136,
       padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
       decoration: BoxDecoration(
