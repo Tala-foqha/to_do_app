@@ -6,6 +6,7 @@ import 'package:to_do_app/core/utils/app_colors%20(1).dart';
 import 'package:to_do_app/core/utils/app_strings.dart';
 import 'package:to_do_app/core/utils/app_styles.dart';
 import 'package:to_do_app/core/widgets/custom_button.dart';
+import 'package:to_do_app/features/task/presentation/views/add_task/add_task_view.dart';
 import 'package:to_do_app/features/task/presentation/views/home/bottom_sheet.dart';
 import 'package:to_do_app/features/task/presentation/views/home/task_component.dart';
 
@@ -69,7 +70,9 @@ class HomeView extends StatelessWidget {
         ),
         backgroundColor: Colors.black,
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, AddTaskView.routeNmae);
+          },
           backgroundColor:AppColors.primary,
           child: const Icon(Icons.add, color: Colors.white),
         ),

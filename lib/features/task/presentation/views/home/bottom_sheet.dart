@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:to_do_app/core/utils/app_colors%20(1).dart';
+import 'package:to_do_app/core/utils/app_strings.dart';
 import 'package:to_do_app/core/widgets/custom_button.dart';
 import 'package:to_do_app/features/task/presentation/views/home/task_component.dart';
 
@@ -12,7 +13,7 @@ class BottomSheetWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         showModalBottomSheet(context:context,builder: (context) {
          return Container(
@@ -31,12 +32,12 @@ class BottomSheetWidget extends StatelessWidget {
             SizedBox(
                 height: 48,
                 width: double.infinity,
-                child: CustomButton(text: 'Task Completed ', onPressed: (){})),
+                child: CustomButton(text:AppStrings.deleteTask , onPressed: (){},backgroundColor: AppColors.red,)),
               SizedBox(height: 24,),
              SizedBox(
                 height: 48,
                 width: double.infinity,
-                child: CustomButton(text: 'Task Completed ', onPressed: (){})),
+                child: CustomButton(text: AppStrings.cancel, onPressed: (){})),
              // SizedBox(height: 24,),
             ],
           ),
