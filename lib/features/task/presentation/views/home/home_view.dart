@@ -1,10 +1,12 @@
 // features/task/presentation/views/home/home_view.dart
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do_app/core/utils/app_colors%20(1).dart';
 import 'package:to_do_app/core/utils/app_strings.dart';
 import 'package:to_do_app/core/utils/app_styles.dart';
+import 'package:to_do_app/features/task/presentation/views/home/task_component.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -58,31 +60,10 @@ class HomeView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 50,),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                Center(child: Image.asset('assets/images/Checklist-rafiki 1.png')),
-              SizedBox(height: 16,),
-              Text('What do you want to do today?',
-              style: AppStyles.latoRegular16.copyWith(
-                color: AppColors.white
-              ),
-              ),
-              SizedBox(height: 10,),
-              Text('Tap + to add your tasks',
-              style: AppStyles.latoRegular16.copyWith(
-                color: AppColors.white
-              ),
-              ),
-
-               
-
-              ],)
-              
-        
-        
-            ],
-          ),
+              //noTasks()
+              TaskComponent(),
+               TaskComponent(),
+            ])
         ),
         backgroundColor: Colors.black,
         floatingActionButton: FloatingActionButton(
@@ -93,4 +74,28 @@ class HomeView extends StatelessWidget {
       ),
     );
   }
+
+  Column noTasks() {
+    return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+              Center(child: Image.asset('assets/images/Checklist-rafiki 1.png')),
+            SizedBox(height: 16,),
+            Text('What do you want to do today?',
+            style: AppStyles.latoRegular16.copyWith(
+              color: AppColors.white
+            ),
+            ),
+            SizedBox(height: 10,),
+            Text('Tap + to add your tasks',
+            style: AppStyles.latoRegular16.copyWith(
+              color: AppColors.white
+            ),
+            ),
+
+             
+
+            ],);
+  }
 }
+
