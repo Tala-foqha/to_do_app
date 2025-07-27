@@ -7,6 +7,7 @@ import 'package:to_do_app/core/helper_functions/theme.dart';
 import 'package:to_do_app/core/services/services_locator.dart';
 import 'package:to_do_app/features/auth/presentation/screen/splash/presentation/views/splash_view.dart';
 import 'package:to_do_app/features/task/presentation/views/add_task/add_task_view.dart';
+import 'package:to_do_app/features/task/presentation/views/home/home_view.dart';
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +33,7 @@ designSize:Size(375, 812) ,
         theme:getAppTheme(),
         darkTheme: getAppDarkTheme(),
         themeMode: ThemeMode.dark,
-        initialRoute: AddTaskView.routeNmae,
+        initialRoute: HomeView.routeName,
       );
       },
     );

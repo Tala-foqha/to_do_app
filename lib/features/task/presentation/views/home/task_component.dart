@@ -2,12 +2,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:to_do_app/core/utils/app_colors%20(1).dart';
+import 'package:to_do_app/core/utils/app_strings.dart';
 import 'package:to_do_app/core/utils/app_styles.dart';
+import 'package:to_do_app/features/task/data/model/task_model.dart';
 
 class TaskComponent extends StatelessWidget {
   const TaskComponent({
-    super.key,
+    super.key, required this.taskModel,
   });
+
+  final TaskModel taskModel;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +36,7 @@ class TaskComponent extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
     Text(
-      'Task 1',
+      taskModel.title,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             color: Colors.white,
             fontSize: 24,
@@ -44,7 +48,7 @@ class TaskComponent extends StatelessWidget {
         SvgPicture.asset('assets/images/timer.svg'),
          const SizedBox(width: 8),
         Text(
-          '09:33 PM - 09:48 PM',
+          '${taskModel.startTime} PM - ${taskModel.endTime}PM',
           style: AppStyles.latoRegular16.copyWith(
             color: Colors.white,
           ),
@@ -52,7 +56,7 @@ class TaskComponent extends StatelessWidget {
       ],
     ),
     Text(
-      'Learn Dart',
+      taskModel.note,
       style: AppStyles.latoRegular16.copyWith(
         color: Colors.white,
         fontSize: 20,
@@ -73,7 +77,7 @@ class TaskComponent extends StatelessWidget {
           RotatedBox(
             quarterTurns: 3, // لعرض النص عموديًا من الأسفل للأعلى
             child: Text(
-              'TODO',
+           taskModel.isCompleted? AppStrings.completed:AppStrings.toDo,
               style: AppStyles.latoRegular16.copyWith(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

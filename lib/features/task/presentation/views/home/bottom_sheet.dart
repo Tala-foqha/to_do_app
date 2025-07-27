@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:to_do_app/core/utils/app_colors%20(1).dart';
 import 'package:to_do_app/core/utils/app_strings.dart';
 import 'package:to_do_app/core/widgets/custom_button.dart';
+import 'package:to_do_app/features/task/data/model/task_model.dart';
 import 'package:to_do_app/features/task/presentation/views/home/task_component.dart';
 
 class BottomSheetWidget extends StatelessWidget {
@@ -44,7 +45,7 @@ class BottomSheetWidget extends StatelessWidget {
          );
         },);
       },
-      child: TaskComponent());
+      child: TaskComponent(taskModel: TaskModel.tasksList[0],));
   }
 }
 
