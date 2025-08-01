@@ -54,4 +54,16 @@ return await db.rawInsert('''
 ''');
 
   }
+ Future<int>  updateDB(int id)async{
+  return await db.rawUpdate('''
+UPDATE Tasks
+Set isCompleted= ?
+''',[1,id]) ;
+  }
+
+  deleteFromDB(int id){
+    db.rawDelete('''
+DELETE FROM Tasks WHERE id= ?
+''',[id]);
+  }
 }
