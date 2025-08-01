@@ -36,4 +36,8 @@ complete INTEGER
      print('DB oppned');}
    ).then((value)=>db=value).catchError((e){print(e.toString());});
   }
+
+  Future<List<Map<String, Object?>>>  getFormDB()async{
+  return await  db.rawQuery('Select * FROM Tasks');
+  }
 }
