@@ -8,10 +8,11 @@ import 'package:to_do_app/features/task/data/model/task_model.dart';
 
 class TaskComponent extends StatelessWidget {
   const TaskComponent({
-    super.key, required this.taskModel,
+    super.key, required this.taskModel, required this.index,
   });
 
   final TaskModel taskModel;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class TaskComponent extends StatelessWidget {
       height: 136,
       padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
       decoration: BoxDecoration(
-        color: AppColors.red,
+        color: getColor(taskModel.color),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -90,3 +91,35 @@ class TaskComponent extends StatelessWidget {
     );
   }
 }
+
+
+
+Color getColor(int index) {
+  switch (index) {
+    case 0:
+      return AppColors.red;
+    case 1:
+      return AppColors.green;
+    case 2:
+      return AppColors.blueGrey;
+    case 3:
+      return AppColors.blue;
+    case 4:
+      return AppColors.orange;
+    case 5:
+      return AppColors.purple;
+    default:
+      return AppColors.grey;
+  }
+}
+
+class NoTaskCommponnet extends StatelessWidget {
+  const NoTaskCommponnet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
+

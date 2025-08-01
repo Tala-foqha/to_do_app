@@ -10,7 +10,9 @@ import 'package:to_do_app/features/task/presentation/views/home/task_component.d
 class BottomSheetWidget extends StatelessWidget {
   const BottomSheetWidget({
     super.key,
+    required this.index
   });
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +47,9 @@ class BottomSheetWidget extends StatelessWidget {
          );
         },);
       },
-      child: TaskComponent(taskModel: TaskModel.tasksList[0],));
+      child: TaskComponent(
+        index: index ,
+        taskModel: TaskModel.tasksList[index],));
   }
 }
 
