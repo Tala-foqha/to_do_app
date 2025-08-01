@@ -4,11 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 import 'package:to_do_app/core/utils/app_colors%20(1).dart';
+import 'package:to_do_app/features/task/data/model/task_model.dart';
 
 part 'task_state.dart';
 
 class TaskCubit extends Cubit<TaskState> {
   TaskCubit() : super(TaskInitial());
+
+  
+ TextEditingController titlecontroller = TextEditingController();
+  TextEditingController notecontroller = TextEditingController();
+ TextEditingController datecontroller = TextEditingController();
+ GlobalKey<FormState> formKey=GlobalKey<FormState>();
 
   
   DateTime currentDate = DateTime.now();
@@ -111,7 +118,22 @@ void changeCheckMarkIndex(index){
   emit(ChangeCheckMarkIndex());
 
 }
+
+
+  List<TaskModel> tasksList = [
+];
+ void insertTask(TaskModel task){
+  emit(InsertTaskLoading());
+  try{
+  tasksList.add(task);
+  emit(InsertTaskSuccess());
+  }catch(e){
+   emit(InsertTaskFailure()) ;
+  }
+
 }
 
 
 
+
+}

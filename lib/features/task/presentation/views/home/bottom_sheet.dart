@@ -1,10 +1,12 @@
 // features/task/presentation/views/home/bottom_sheet.dart
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:to_do_app/core/utils/app_colors%20(1).dart';
 import 'package:to_do_app/core/utils/app_strings.dart';
 import 'package:to_do_app/core/widgets/custom_button.dart';
 import 'package:to_do_app/features/task/data/model/task_model.dart';
+import 'package:to_do_app/features/task/presentation/manager/task/task_cubit.dart';
 import 'package:to_do_app/features/task/presentation/views/home/task_component.dart';
 
 class BottomSheetWidget extends StatelessWidget {
@@ -49,7 +51,7 @@ class BottomSheetWidget extends StatelessWidget {
       },
       child: TaskComponent(
         index: index ,
-        taskModel: TaskModel.tasksList[index],));
+        taskModel: BlocProvider.of<TaskCubit>(context).tasksList[index],));
   }
 }
 

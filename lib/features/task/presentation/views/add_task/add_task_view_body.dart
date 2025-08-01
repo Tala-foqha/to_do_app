@@ -8,21 +8,20 @@ import 'package:to_do_app/core/utils/app_colors%20(1).dart';
 import 'package:to_do_app/core/utils/app_strings.dart';
 import 'package:to_do_app/core/utils/app_styles.dart';
 import 'package:to_do_app/core/widgets/custom_button.dart';
+import 'package:to_do_app/features/task/data/model/task_model.dart';
 import 'package:to_do_app/features/task/presentation/manager/task/task_cubit.dart';
 import 'package:to_do_app/features/task/presentation/views/add_task/custom_text_form_field.dart';
 class AddTaskViewBody extends StatelessWidget {
   AddTaskViewBody({super.key});
 
-  final TextEditingController titlecontroller = TextEditingController();
-  final TextEditingController notecontroller = TextEditingController();
-  final TextEditingController datecontroller = TextEditingController();
-
+  
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Form(
+          key:BlocProvider.of<TaskCubit>(context).formKey ,
           child: BlocBuilder<TaskCubit, TaskState>(
             builder: (context, state) {
               final cubit = BlocProvider.of<TaskCubit>(context);
@@ -37,7 +36,7 @@ class AddTaskViewBody extends StatelessWidget {
                   ),
                   SizedBox(height: 8.h),
                   CustomTextFormField(
-                    controoller: titlecontroller,
+                    controoller: BlocProvider.of<TaskCubit>(context).titlecontroller,
                     title: AppStrings.tilteHint,
                   ),
                   SizedBox(height: 24.h),
@@ -49,7 +48,7 @@ class AddTaskViewBody extends StatelessWidget {
                   ),
                   SizedBox(height: 8.h),
                   CustomTextFormField(
-                    controoller: notecontroller,
+                    controoller: BlocProvider.of<TaskCubit>(context).notecontroller,
                     title: AppStrings.notehint,
                   ),
                   SizedBox(height: 24.h),
@@ -61,7 +60,7 @@ class AddTaskViewBody extends StatelessWidget {
                   ),
                   SizedBox(height: 8.h),
                   CustomTextFormField(
-                    controoller: datecontroller,
+                    controoller: BlocProvider.of<TaskCubit>(context).datecontroller,
                     title: DateFormat.yMd().format(cubit.currentDate),
                     suffixIcon: GestureDetector(
                       onTap: () async {
@@ -175,14 +174,28 @@ class AddTaskViewBody extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 40.h),
-                  SizedBox(
+               state is InsertTaskLoading?CircularProgressIndicator(
+                color: AppColors.primary,):SizedBox(
                     height: 48.h,
                     width: double.infinity,
                     child: CustomButton(
                       text: AppStrings.addTask,
                       onPressed: () {
-                        // تنفيذ الإضافة
-                      },
+                       if (cubit.formKey.currentState!.validate()) {
+    cubit.insertTask(
+      TaskModel(
+        id: '1',
+        title: cubit.titlecontroller.text,
+        note: cubit.notecontroller.text,
+        date: DateFormat.yMd().format(cubit.currentDate),
+        startTime: cubit.startTime,
+        endTime: cubit.endtTime,
+        color: cubit.currentIndex,
+        isCompleted: false,
+      ),
+    );
+  }
+},
                     ),
                   ),
                 ],

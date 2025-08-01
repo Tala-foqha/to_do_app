@@ -27,6 +27,14 @@ class GetEndTimeFailureState extends TaskState{}
 
 class ChangeCheckMarkIndex extends TaskState{}
 
+class InsertTaskLoading extends TaskState{}
+
+class InsertTaskSuccess extends TaskState{}
+class InsertTaskFailure extends TaskState{}
+
+
+
+
 
 
 
