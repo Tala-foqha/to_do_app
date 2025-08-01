@@ -44,6 +44,7 @@ dependencies:
   modal_bottom_sheet: ^3.0.0
   flutter_screenutil: ^5.9.3
   flutter_bloc: ^9.1.1
+  fluttertoast: ^8.2.12
 
 dev_dependencies:
   flutter_test:

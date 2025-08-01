@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:to_do_app/core/utils/app_colors%20(1).dart';
 import 'package:to_do_app/core/utils/app_strings.dart';
 import 'package:to_do_app/core/utils/app_styles.dart';
+import 'package:to_do_app/core/utils/constant.dart';
 import 'package:to_do_app/core/widgets/custom_button.dart';
 import 'package:to_do_app/features/task/data/model/task_model.dart';
 import 'package:to_do_app/features/task/presentation/manager/task/task_cubit.dart';
@@ -22,7 +23,38 @@ class AddTaskViewBody extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         child: Form(
           key:BlocProvider.of<TaskCubit>(context).formKey ,
-          child: BlocBuilder<TaskCubit, TaskState>(
+          child: BlocConsumer<TaskCubit, TaskState>(
+            listener:(context,state) {
+            if(state is InsertTaskSuccess){
+            showToast(message:'Added Task Successfuly',state: ToastStates.success );
+            Future.delayed(Duration(seconds: 10));
+       
+              Navigator.pop(context);
+            }  
+            },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
             builder: (context, state) {
               final cubit = BlocProvider.of<TaskCubit>(context);
               return Column(
@@ -36,6 +68,12 @@ class AddTaskViewBody extends StatelessWidget {
                   ),
                   SizedBox(height: 8.h),
                   CustomTextFormField(
+                    validator:(val){
+                      if(val!.isEmpty){
+                       return  'Enter Valid Title';
+                      }
+                      return null;
+                    } ,
                     controoller: BlocProvider.of<TaskCubit>(context).titlecontroller,
                     title: AppStrings.tilteHint,
                   ),
@@ -48,6 +86,13 @@ class AddTaskViewBody extends StatelessWidget {
                   ),
                   SizedBox(height: 8.h),
                   CustomTextFormField(
+
+                     validator:(val){
+                      if(val!.isEmpty){
+                       return  AppStrings.noteErrorMsg;
+                      }
+                      return null;
+                    } ,
                     controoller: BlocProvider.of<TaskCubit>(context).notecontroller,
                     title: AppStrings.notehint,
                   ),
@@ -174,8 +219,10 @@ class AddTaskViewBody extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 40.h),
-               state is InsertTaskLoading?CircularProgressIndicator(
-                color: AppColors.primary,):SizedBox(
+               state is InsertTaskLoading?Center(
+                 child: CircularProgressIndicator(
+                  color: AppColors.primary,),
+               ):SizedBox(
                     height: 48.h,
                     width: double.infinity,
                     child: CustomButton(

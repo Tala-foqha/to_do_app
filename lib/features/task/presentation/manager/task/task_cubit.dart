@@ -125,8 +125,12 @@ void changeCheckMarkIndex(index){
  void insertTask(TaskModel task){
   emit(InsertTaskLoading());
   try{
+    Future.delayed(Duration(seconds: 1));
   tasksList.add(task);
   emit(InsertTaskSuccess());
+  titlecontroller.clear();
+  notecontroller.clear();
+   
   }catch(e){
    emit(InsertTaskFailure()) ;
   }

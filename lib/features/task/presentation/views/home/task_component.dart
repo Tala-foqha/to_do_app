@@ -38,10 +38,10 @@ class TaskComponent extends StatelessWidget {
                 children: [
     Text(
       taskModel.title,
-      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-            color: Colors.white,
-            fontSize: 24,
-          ),
+      style:AppStyles.latoBold40.copyWith(
+        fontSize: 24,
+        color: AppColors.white
+      )
     ),
     Row(
       children: [
@@ -49,7 +49,7 @@ class TaskComponent extends StatelessWidget {
         SvgPicture.asset('assets/images/timer.svg'),
          const SizedBox(width: 8),
         Text(
-          '${taskModel.startTime} PM - ${taskModel.endTime}PM',
+          '${taskModel.startTime} - ${taskModel.endTime}',
           style: AppStyles.latoRegular16.copyWith(
             color: Colors.white,
           ),
@@ -58,10 +58,10 @@ class TaskComponent extends StatelessWidget {
     ),
     Text(
       taskModel.note,
-      style: AppStyles.latoRegular16.copyWith(
-        color: Colors.white,
-        fontSize: 20,
-      ),
+      style: AppStyles.latoBold40.copyWith(
+        fontSize: 24,
+        color: AppColors.white
+      )
     ),
                 ],
               ),

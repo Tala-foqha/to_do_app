@@ -7,19 +7,21 @@ import 'package:to_do_app/core/utils/app_styles.dart';
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
-     this.controoller, required this.title, this.suffixIcon, this.readOnly=false,
+     this.controoller, required this.title, this.suffixIcon, this.readOnly=false, this.validator,
   });
 
   final TextEditingController? controoller;
   final String title;
  final  Widget? suffixIcon;
  final bool readOnly ;
+ final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controoller,
       readOnly: readOnly,
+      validator:validator ,
       
       decoration: InputDecoration(
         
