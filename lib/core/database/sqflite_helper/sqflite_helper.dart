@@ -1,5 +1,6 @@
 // core/database/sqflite_helper/sqflite_helper.dart
 import 'package:sqflite/sqflite.dart';
+import 'package:to_do_app/features/task/data/model/task_model.dart';
 
 class SqfliteHelper {
   late Database db;
@@ -39,5 +40,18 @@ complete INTEGER
 
   Future<List<Map<String, Object?>>>  getFormDB()async{
   return await  db.rawQuery('Select * FROM Tasks');
+  }
+
+ Future<int> insertToDB(TaskModel model)async{
+return await db.rawInsert('''
+  INSERT INTO Tasks(
+    title, note, date, startTime, endTime, color, isCompleted
+  )
+  VALUES (
+    "${model.title}", "${model.note}", "${model.date}", "${model.startTime}",
+    "${model.endTime}", ${model.color}, ${model.isCompleted}
+  )
+''');
+
   }
 }
